@@ -5,7 +5,7 @@ from tech.domain.entities import TechCaseEntity
 class TestTechCaseUnit(unittest.TestCase):
     def setUp(self):
         self.valid_params = {
-            'input': 'asdfzxascvdfnozebranetworkpoasoidfuizxdfzxascvdcvdcvdasdnznznzasdf'
+            'input': 'palavrapalavrinha'
         }
 
         self.invalid_params_using_numbers = {
@@ -17,9 +17,8 @@ class TestTechCaseUnit(unittest.TestCase):
         }
 
     def test_valid_params(self):
-        case = TechCaseEntity.find_longest_word(**self.valid_params)
-        self.assertEqual(
-            case, 'asdfzxascvdfnozebranetworkpoasoidfuizxdfzxascvdcvdcvdasdnznznzasdf')
+        case = TechCaseEntity.find_longest_word(self, **self.valid_params)
+        self.assertEqual(case[0], 'palavrapalavrinha')
 
     def test_invalid_params_using_numbers(self):
         with self.assertRaises(TypeError):
